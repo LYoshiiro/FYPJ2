@@ -20,6 +20,7 @@ public class UniversalFunctions : MonoBehaviour {
 			default:
 				string strMsg = "Direction Value Invalid/Missing";
 				Print(strMsg);
+				Debug.DrawLine(T.position, T.forward * 50f, Color.gray);
 			break;
 		}
 	}

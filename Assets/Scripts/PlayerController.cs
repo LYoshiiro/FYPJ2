@@ -69,7 +69,8 @@ public class PlayerController : MonoBehaviour {
 			(transform.position.x > -(refMap.GetBasePlateSize().x / 2.0f) && transform.position.z > -(refMap.GetBasePlateSize().y / 2.0f)))
 		vec3LastPoint = refCore.CopyXZ(transform.position, vec3LastPoint);
 
-		refCore.Print(vec3LastPoint);
+		// Show Player's last coordinates
+		// refCore.Print(vec3LastPoint);
 
 		// Check last closest point then displace last marked point
 		if (vec3LastPoint.x > 0 || vec3LastPoint.x == 0)

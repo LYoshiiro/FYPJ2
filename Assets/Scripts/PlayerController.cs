@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
 
 		// Check if the Player is on the Base Plate or not
 		if (transform.position.y < (tWater.position.y - refCore.BoundLengths(transform).y))	blOffBase = true;
-		else																				blOffBase = false;
+		else																				blOffBase = false;  
 
 		// Set Player back on the ground to the last estimated point
 		if (blOffBase == true)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour {
 // Class Instances Reference
 	[SerializeField] private UniversalFunctions refCore;
+    [SerializeField] private MapValue refMapValue;
 
 // GameObjects
 	[SerializeField] private Transform tBasePlate;
@@ -34,7 +35,13 @@ public class MapGenerator : MonoBehaviour {
 		}
 	}
 
+// Return the Base Plate's size
 	public Vector2 GetBasePlateSize() {
 		return vec2BasePlateSize;
 	}
+
+// Generate Map Values
+    private void GenerateValues() {
+        // Work to do
+    }
 }

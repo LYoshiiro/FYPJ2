@@ -9,6 +9,7 @@ public class MapGenerator : MonoBehaviour {
 
 // GameObjects
 	[SerializeField] private Transform tBasePlate;
+	private Transform tMapHolder;
 
 // Scales
 	[SerializeField] private Vector2 vec2BasePlateSize;
@@ -18,15 +19,17 @@ public class MapGenerator : MonoBehaviour {
 
 // Map Value Offset
 	private int iTree;
+	private int iStone;
 
 	private void Start () {
 		iTree = 0;
+		iStone = 0;
 
 		string strHolder = "Map Holder";
 		if (transform.Find(strHolder))
 			DestroyImmediate(transform.Find(strHolder).gameObject);
 
-		Transform tMapHolder = new GameObject (strHolder).transform;
+		tMapHolder = new GameObject (strHolder).transform;
 		tMapHolder.parent = transform;
 
 		int iTileCount = 1;
@@ -61,26 +64,47 @@ public class MapGenerator : MonoBehaviour {
 // Generate Map Values
     private void GenerateValues() {
 		// Get the Holder for all the map tiles
-		string strHolder = "Map Holder";
-        if (transform.Find(strHolder)) {
+        if (tMapHolder != null) {
 			// Check if the tree at the start is spawned yet or not
 			if (iTree < refMapValue.GetMapValue(1)) {
 				++iTree;
 				// Random generated position out of tile map size
-				int iRandom = Mathf.RoundToInt(Random.Range(1.0f, transform.Find(strHolder).transform.childCount));
+				int iRandom = Mathf.RoundToInt(Random.Range(1.0f, tMapHolder.childCount));
 				// Loop Random Generation till tile is not obstructed
-				while (transform.Find(strHolder).transform.GetChild(iRandom).GetComponent<TileBehaviour>().GetInteraction(5) == true)
-					iRandom = Mathf.RoundToInt(Random.Range(1.0f, transform.Find(strHolder).transform.childCount));
+				while (tMapHolder.GetChild(iRandom).GetComponent<TileBehaviour>().GetInteraction(5) == true)
+					iRandom = Mathf.RoundToInt(Random.Range(1.0f, tMapHolder.childCount));
 
-				Transform tRandomTransform = transform.Find(strHolder).transform.GetChild(iRandom).transform;
-
+				// Get the tile of the randomized location and create a Tree on said position
+				Transform tRandomTransform = tMapHolder.GetChild(iRandom).transform;
 				Transform tTree = Instantiate(refMapValue.GetMapObject(1) as Object, tRandomTransform.position, Quaternion.identity) as Transform;
-				// Set Tile as Obstructed Tile
-				tRandomTransform.GetComponent<TileBehaviour>().SetInteraction(5, true); // First Tile doesnt registers
-				refCore.Print(tRandomTransform.name);
-				// Setting Instantiated values
+
+				// Set Tree's Parent Tile to set Tile as Obstructed
+				tTree.GetComponent<TreeBehaviour>().SetParentTile(tRandomTransform);
+
+				// Setting Instantiated Values
 				tTree.GetComponent<TreeBehaviour>().SetReferences(refCore, refMapValue);
 				tTree.GetComponent<TreeBehaviour>().SetGrowthLevel(1);
+			}
+
+			// Check if the stone at the start is spawned yet or not
+			if (iStone < refMapValue.GetMapValue(2)) {
+				++iStone;
+				// Random generated position out of tile map size
+				int iRandom = Mathf.RoundToInt(Random.Range(1.0f, tMapHolder.childCount));
+				// Loop Random Generation till tile is not obstructed
+				while (tMapHolder.GetChild(iRandom).GetComponent<TileBehaviour>().GetInteraction(5) == true)
+					iRandom = Mathf.RoundToInt(Random.Range(1.0f, tMapHolder.childCount));
+
+				// Get the tile of the randomized location and create a Stone on said position
+				Transform tRandomTransform = tMapHolder.GetChild(iRandom).transform;
+				Transform tStone = Instantiate(refMapValue.GetMapObject(2) as Object, tRandomTransform.position, Quaternion.identity) as Transform;
+
+				// Set Tree's Parent Tile to set Tile as Obstructed
+				tStone.GetComponent<StoneBehaviour>().SetParentTile(tRandomTransform);
+
+				// Setting Instantiated Values
+				tStone.GetComponent<StoneBehaviour>().SetReferences(refCore, refMapValue);
+				tStone.GetComponent<StoneBehaviour>().SetAgeLevel(1);
 			}
 		}
     }

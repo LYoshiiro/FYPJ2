@@ -111,8 +111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refCore: {fileID: 0}
-  refTreeGrowth1: {fileID: 4730477794876242}
-  refTreeGrowth2: {fileID: 4730477794876242}
-  refTreeGrowth3: {fileID: 4520488947382226, guid: e4f6c99fd93de7c48a1aafd8870220a7,
+  refMapValue: {fileID: 0}
+  tParent: {fileID: 0}
+  tTreeGrowth2: {fileID: 4730477794876242}
+  tTreeGrowth3: {fileID: 4520488947382226, guid: e4f6c99fd93de7c48a1aafd8870220a7,
     type: 2}
   iGrowth: 0
+  iStartDate: 0

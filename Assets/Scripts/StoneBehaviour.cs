@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeBehaviour : MonoBehaviour {
+public class StoneBehaviour : MonoBehaviour {
 // Class Instances Reference
 	[SerializeField] private UniversalFunctions refCore;
 	[SerializeField] private MapValue refMapValue;
 
 // GameObject Instances Reference
 	[SerializeField] private Transform tParent;
-    [SerializeField] private Transform tTreeGrowth2;
-    [SerializeField] private Transform tTreeGrowth3;
+    [SerializeField] private Transform tStoneGrowth2;
+    [SerializeField] private Transform tStoneGrowth3;
 	
-// Tree Growth Stage Values
-	[SerializeField] private int iGrowth;
+// Stone Growth Stage Values
+	[SerializeField] private int iAge;
 	[SerializeField] private int iStartDate;
 
 	private void Start() {
@@ -22,7 +22,7 @@ public class TreeBehaviour : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
-		TreeGrowth();
+		StoneGrowth();
 	}
 
 // Set Instances Reference
@@ -36,30 +36,30 @@ public class TreeBehaviour : MonoBehaviour {
 		tParent = tTile;
 	}
 
-// Set the Growth Level of the Tree
-	public void SetGrowthLevel(int iLevel) {
-		iGrowth = iLevel;
+// Set the Age of the Stone
+	public void SetAgeLevel(int iLevel) {
+		iAge = iLevel;
 	}
 
-// Set the Start Date of the Tree Growth
+// Set the Start Date of the Stone Growth
 	public void SetStartDate(int iDate) {
 		iStartDate = iDate;
 	}
 
-// Tree Growth Process and Logic
-	private void TreeGrowth() {
-		if (iGrowth < 3) {
+// Stone Growth Process and Logic
+	private void StoneGrowth() {
+		if (iAge < 3) {
 			if ((int.Parse(refMapValue.GetMapTimeDate(2)) - iStartDate) > 3 ) {
-				switch (iGrowth) {
+				switch (iAge) {
 					case 1:
 						// Hide Updating GameObject
 						transform.GetComponent<MeshRenderer>().enabled = false;
 						// Instantiate Updated GameObject
-						Transform tNewTree1 = Instantiate(tTreeGrowth2, transform.position, Quaternion.identity);
+						Transform tNewStone1 = Instantiate(tStoneGrowth2, transform.position, Quaternion.identity);
 						// Setting Instantiated values
-						tNewTree1.GetComponent<TreeBehaviour>().SetReferences(refCore, refMapValue);
-						tNewTree1.GetComponent<TreeBehaviour>().SetGrowthLevel(++iGrowth);
-						tNewTree1.GetComponent<TreeBehaviour>().SetStartDate(int.Parse(refMapValue.GetMapTimeDate(2)));
+						tNewStone1.GetComponent<StoneBehaviour>().SetReferences(refCore, refMapValue);
+						tNewStone1.GetComponent<StoneBehaviour>().SetAgeLevel(++iAge);
+						tNewStone1.GetComponent<StoneBehaviour>().SetStartDate(int.Parse(refMapValue.GetMapTimeDate(2)));
 						// Destroy Old GameObject
 						Destroy(transform.gameObject);
 					break;
@@ -68,16 +68,16 @@ public class TreeBehaviour : MonoBehaviour {
 						// Hide Updating GameObject
 						transform.GetComponent<MeshRenderer>().enabled = false;
 						// Instantiate Updated GameObject
-						Transform tNewTree2 = Instantiate(tTreeGrowth3, transform.position, Quaternion.identity);
+						Transform tNewStone2 = Instantiate(tStoneGrowth3, transform.position, Quaternion.identity);
 						// Setting Instantiated values
-						tNewTree2.GetComponent<TreeBehaviour>().SetReferences(refCore, refMapValue);
-						tNewTree2.GetComponent<TreeBehaviour>().SetGrowthLevel(++iGrowth);
-						tNewTree2.GetComponent<TreeBehaviour>().SetStartDate(int.Parse(refMapValue.GetMapTimeDate(2)));
+						tNewStone2.GetComponent<StoneBehaviour>().SetReferences(refCore, refMapValue);
+						tNewStone2.GetComponent<StoneBehaviour>().SetAgeLevel(++iAge);
+						tNewStone2.GetComponent<StoneBehaviour>().SetStartDate(int.Parse(refMapValue.GetMapTimeDate(2)));
 						// Destroy Old GameObject
 						Destroy(transform.gameObject);
 					break;
 
-					default: refCore.Print("Growth Level is Invalid/Missing."); break;
+					default: refCore.Print("Age is Invalid/Missing."); break;
 				}
 			}
 		}

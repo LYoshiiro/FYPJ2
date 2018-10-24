@@ -8,6 +8,7 @@ public class MapValue : MonoBehaviour {
 
 // GameObject Instances Reference
     [SerializeField] private Transform refTree;
+    [SerializeField] private Transform refStone;
 
 // Map Time and Date
     private float ftTime;
@@ -15,6 +16,7 @@ public class MapValue : MonoBehaviour {
 
 // Terrain Values
     private int iTreeNum;
+    private int iStoneNum;
 
     private void Start () {
         // Set the timescale to match real time
@@ -25,6 +27,7 @@ public class MapValue : MonoBehaviour {
 
         // Set Terrain Values
         iTreeNum = 2;
+        iStoneNum = 3;
 	}
 	
     private void FixedUpdate() {
@@ -32,10 +35,10 @@ public class MapValue : MonoBehaviour {
         ftTime += Time.deltaTime;
 
         // Print the Map Time and Date
-        string strTime = "Time: " + ftTime;
-        string strDate = "Date: " + iDate;
-        // refCore.Print(strTime);
-        // refCore.Print(strDate);
+        /*  string strTime = "Time: " + ftTime;
+            string strDate = "Date: " + iDate;
+            refCore.Print(strTime);
+            refCore.Print(strDate); */
 
         // If the Time is over a certain mark, reset the time and set it to a new day
         // if (ftTime > 720000.0f) {
@@ -49,6 +52,7 @@ public class MapValue : MonoBehaviour {
     public Object GetMapObject(int iObjectNum) {
         switch (iObjectNum) {
             case 1: return refTree;
+            case 2: return refStone;
 
             default:
                 refCore.Print("Object Number Invalid/Missing.");
@@ -60,6 +64,7 @@ public class MapValue : MonoBehaviour {
     public int GetMapValue(int iObjectNum) {
         switch (iObjectNum) {
             case 1: return iTreeNum;
+            case 2: return iStoneNum;
 
             default:
                 refCore.Print("Object Number Invalid/Missing.");

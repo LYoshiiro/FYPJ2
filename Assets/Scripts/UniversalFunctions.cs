@@ -18,7 +18,7 @@ public class UniversalFunctions : MonoBehaviour {
 			case 1: Debug.DrawLine(T.position, T.up * 50f, Color.gray); break;
 			// Return error message
 			default:
-				string strMsg = "Direction Value Invalid/Missing";
+				string strMsg = "Direction Value Invalid/Missing.";
 				Print(strMsg);
 				Debug.DrawLine(T.position, T.forward * 50f, Color.gray);
 			break;

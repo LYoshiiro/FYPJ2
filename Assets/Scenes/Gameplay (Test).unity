@@ -219,6 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 360892082}
   - component: {fileID: 360892083}
+  - component: {fileID: 360892084}
   m_Layer: 0
   m_Name: Map Generator
   m_TagString: Untagged
@@ -251,9 +252,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refCore: {fileID: 444444093}
+  refMapValue: {fileID: 360892084}
   tBasePlate: {fileID: 4670071696403324, guid: 1a35ace3524e15744912caf4fef84e31, type: 2}
   vec2BasePlateSize: {x: 10, y: 10}
   ftOutline: 0.02
+--- !u!114 &360892084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 360892081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058b28a2582133242aba74b66c1d72ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refCore: {fileID: 444444093}
+  refTree: {fileID: 4068868209322032, guid: bc1910980e738994fa97a2acb99433f4, type: 2}
 --- !u!1 &389166751 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 977666b31b9427a47a6500f97bfa50b3, type: 3}

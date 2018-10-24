@@ -6,6 +6,9 @@ public class MapValue : MonoBehaviour {
 // Class Instances Reference
     [SerializeField] private UniversalFunctions refCore;
 
+// GameObject Instances Reference
+    [SerializeField] private Transform refTree;
+
 // Map Time and Date
     private float ftTime;
     private int iDate;
@@ -20,15 +23,10 @@ public class MapValue : MonoBehaviour {
         ftTime = 0.0f;
         iDate = 0;
 
-		
         // Set Terrain Values
-        iTreeNum = 1;
+        iTreeNum = 2;
 	}
 	
-	private void Update () {
-		
-	}
-
     private void FixedUpdate() {
         // Move Time as the Game Progress
         ftTime += Time.deltaTime;
@@ -36,13 +34,46 @@ public class MapValue : MonoBehaviour {
         // Print the Map Time and Date
         string strTime = "Time: " + ftTime;
         string strDate = "Date: " + iDate;
-        refCore.Print(strTime);
-        refCore.Print(strDate);
+        // refCore.Print(strTime);
+        // refCore.Print(strDate);
 
         // If the Time is over a certain mark, reset the time and set it to a new day
-        if (ftTime > 720000.0f) {
+        // if (ftTime > 720000.0f) {
+        if (ftTime > 2.5f) {
             iDate += 1;
             ftTime = 0.0f;
+        }
+    }
+
+// Return Object based of the call value
+    public Object GetMapObject(int iObjectNum) {
+        switch (iObjectNum) {
+            case 1: return refTree;
+
+            default:
+                refCore.Print("Object Number Invalid/Missing.");
+                return null;
+        }
+    }
+
+// Return Object's value based of the object number
+    public int GetMapValue(int iObjectNum) {
+        switch (iObjectNum) {
+            case 1: return iTreeNum;
+
+            default:
+                refCore.Print("Object Number Invalid/Missing.");
+                return 0;
+        }
+    }
+
+// Return Time or Date base off call value
+    public string GetMapTimeDate(int iCallValue) {
+        switch (iCallValue) {
+            case 1: return ftTime.ToString();
+            case 2: return iDate.ToString();
+
+            default: refCore.Print("Call Value Invalid/Missing."); return "0";
         }
     }
 }

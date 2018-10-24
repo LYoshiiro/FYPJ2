@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33015286187968536}
   - component: {fileID: 23463896318956296}
   - component: {fileID: 64184725746838808}
+  - component: {fileID: 114339211111522990}
   m_Layer: 0
   m_Name: Block_BasePlate
   m_TagString: Ground
@@ -98,3 +99,20 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: ccff45996c4838149939c5dcd3247f28, type: 3}
+--- !u!114 &114339211111522990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038305250704560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6be2a8d88f52d4088e50efc4c774b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refCore: {fileID: 0}
+  isTree: 0
+  isRock: 0
+  isTiled: 0
+  isTileable: 0
+  isObstructed: 0

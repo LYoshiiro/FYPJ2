@@ -49,8 +49,8 @@ public class MapValue : MonoBehaviour {
     }
 
 // Return Object based of the call value
-    public Object GetMapObject(int iObjectNum) {
-        switch (iObjectNum) {
+    public Object GetMapObject(int ObjectNum) {
+        switch (ObjectNum) {
             case 1: return refTree;
             case 2: return refStone;
 
@@ -61,8 +61,8 @@ public class MapValue : MonoBehaviour {
     }
 
 // Return Object's value based of the object number
-    public int GetMapValue(int iObjectNum) {
-        switch (iObjectNum) {
+    public int GetMapValue(int ObjectNum) {
+        switch (ObjectNum) {
             case 1: return iTreeNum;
             case 2: return iStoneNum;
 
@@ -73,8 +73,8 @@ public class MapValue : MonoBehaviour {
     }
 
 // Return Time or Date base off call value
-    public string GetMapTimeDate(int iCallValue) {
-        switch (iCallValue) {
+    public string GetMapTimeDate(int CallValue) {
+        switch (CallValue) {
             case 1: return ftTime.ToString();
             case 2: return iDate.ToString();
 

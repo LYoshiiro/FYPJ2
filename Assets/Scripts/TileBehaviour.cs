@@ -33,20 +33,20 @@ public class TileBehaviour : MonoBehaviour {
 	}
 
 // Set Interactions with tile via Call Values
-	public void SetInteraction(int iCallValue, bool blValue) {
-		switch (iCallValue) {
-			case 1: isTree = blValue; break;
-			case 2: isRock = blValue; break;
-			case 3: isTiled = blValue; break;
-			case 4: isTileable = blValue; break;
-			case 5: isObstructed = blValue; break;
+	public void SetInteraction(int CallValue, bool Value) {
+		switch (CallValue) {
+			case 1: isTree = Value; break;
+			case 2: isRock = Value; break;
+			case 3: isTiled = Value; break;
+			case 4: isTileable = Value; break;
+			case 5: isObstructed = Value; break;
 
 			default: refCore.Print("CallValue is Invalid/Missing."); break;
 		}
 	}
 
-	public bool GetInteraction(int iCallValue) {
-		switch (iCallValue) {
+	public bool GetInteraction(int CallValue) {
+		switch (CallValue) {
 			case 1: return isTree;
 			case 2: return isRock;
 			case 3: return isTiled;

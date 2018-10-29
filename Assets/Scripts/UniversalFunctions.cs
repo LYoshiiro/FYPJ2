@@ -10,8 +10,8 @@ public class UniversalFunctions : MonoBehaviour {
 	}
 
 	// Draw line from object
-	public void DebugPointer(Transform T, int intDirection) {
-		switch (intDirection) {
+	public void DebugPointer(Transform T, int Direction) {
+		switch (Direction) {
 			// Draw line towards object's forward
 			case 0: Debug.DrawLine(T.position, T.forward * 50f, Color.gray); break;
 			// Draw line towards object's up
@@ -32,9 +32,9 @@ public class UniversalFunctions : MonoBehaviour {
 	}
 
 	// Copy x and z values only
-	public Vector3 CopyXZ(Vector3 vec3CopyFrom, Vector3 vec3CopyTo) {
-		vec3CopyTo.x = vec3CopyFrom.x;
-		vec3CopyTo.z = vec3CopyFrom.z;
-		return vec3CopyTo;
+	public Vector3 CopyXZ(Vector3 CopyFrom, Vector3 CopyTo) {
+		CopyTo.x = CopyFrom.x;
+		CopyTo.z = CopyFrom.z;
+		return CopyTo;
 	}
 }

@@ -32,18 +32,18 @@ public class TreeBehaviour : MonoBehaviour {
 	}
 
 // Set Parent Tile
-	public void SetParentTile(Transform tTile) {
-		tParent = tTile;
+	public void SetParentTile(Transform Tile) {
+		tParent = Tile;
 	}
 
 // Set the Growth Level of the Tree
-	public void SetGrowthLevel(int iLevel) {
-		iGrowth = iLevel;
+	public void SetGrowthLevel(int Level) {
+		iGrowth = Level;
 	}
 
 // Set the Start Date of the Tree Growth
-	public void SetStartDate(int iDate) {
-		iStartDate = iDate;
+	public void SetStartDate(int Date) {
+		iStartDate = Date;
 	}
 
 // Tree Growth Process and Logic

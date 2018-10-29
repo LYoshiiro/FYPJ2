@@ -32,18 +32,18 @@ public class StoneBehaviour : MonoBehaviour {
 	}
 
 // Set Parent Tile
-	public void SetParentTile(Transform tTile) {
-		tParent = tTile;
+	public void SetParentTile(Transform Tile) {
+		tParent = Tile;
 	}
 
 // Set the Age of the Stone
-	public void SetAgeLevel(int iLevel) {
-		iAge = iLevel;
+	public void SetAgeLevel(int Level) {
+		iAge = Level;
 	}
 
 // Set the Start Date of the Stone Growth
-	public void SetStartDate(int iDate) {
-		iStartDate = iDate;
+	public void SetStartDate(int Date) {
+		iStartDate = Date;
 	}
 
 // Stone Growth Process and Logic

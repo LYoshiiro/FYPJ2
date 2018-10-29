@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,4 +39,29 @@ public class UniversalFunctions : MonoBehaviour {
 		CopyTo.z = CopyFrom.z;
 		return CopyTo;
 	}
+
+	// CSV Reader
+	public string[] CSVReader(string Path, string Name) {
+		// Parse Array
+		string[] strAry = new string[0];
+
+		if (!File.Exists(Path + "\\" + Name)) {
+			File.Create(Path);
+			File.CreateText(Path + "\\" + Name);
+			File.AppendAllText(Path + "\\" + Name, "Something is written here!");
+		}
+		
+		else {
+			strAry = File.ReadAllLines(FilePath);
+			foreach (string str in strAry)
+				Print(str);
+		}
+
+		return strAry;
+	}
 }
+
+// Returns Application's Path
+// refCore.Print(System.IO.Directory.GetCurrentDirectory());
+// Prints the Desktop's Path
+// refCore.Print(System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));

@@ -41,24 +41,34 @@ public class UniversalFunctions : MonoBehaviour {
 	}
 
 	// CSV Reader
-	public string[] CSVReader(string Path, string Name) {
+	public string[] CSVReader(string Name) {
 		// Parse Array
 		string[] strAry = new string[0];
 
-		if (!File.Exists(Path + "\\" + Name)) {
-			File.Create(Path);
-			File.CreateText(Path + "\\" + Name);
-			File.AppendAllText(Path + "\\" + Name, "Something is written here!");
-		}
-		
-		else {
-			strAry = File.ReadAllLines(FilePath);
-			foreach (string str in strAry)
-				Print(str);
-		}
+        // Failsafe
+        if (!File.Exists(Name))
+            File.Create(Name);
+
+        Print(File.GetAttributes(Name));
+
+
+        // Get all the lines from the text file
+        strAry = File.ReadAllLines(Name);
 
 		return strAry;
 	}
+
+    // CSV Writer
+    public void CSVWriter(string Name, string[] Append) {
+        // Failsafe
+        if (!File.Exists(Name))
+            File.Create(Name);
+
+
+        // Append all the lines to the text file
+        for (int i = 0; i < Append.Length; i++)
+            File.AppendAllText(Name, Append[i]);
+    }
 }
 
 // Returns Application's Path

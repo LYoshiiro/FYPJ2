@@ -12,10 +12,14 @@ public class ItemManager : MonoBehaviour {
 
 	private void Start() {
 		// Create FilePath
-		strFile = "Test.txt";
-		strAry = refCore.CSVReader(System.IO.Directory.GetCurrentDirectory() + "\\Test", strFile);
+		strFile = "Items.txt";
 
-		for (int i = 0; i < strAry.Length; i++)
-			refCore.Print(strAry[i]);
+        // Get Contents from FilePath
+        strAry = refCore.CSVReader(strFile);
+
+        // Instantiate all items from the FilePath
+        //for (int i = 0; i < strAry.Length; i++) {
+
+        //}
 	}
 }

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33819218584317182}
   - component: {fileID: 23912328074932356}
   - component: {fileID: 64501601138657592}
-  - component: {fileID: 114934306445220592}
+  - component: {fileID: 114761687436714088}
   m_Layer: 0
   m_Name: Block_StoneAge2
   m_TagString: Untagged
@@ -99,7 +99,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: b9a391c00adfb0544b27036f1e8ee286, type: 3}
---- !u!114 &114934306445220592
+--- !u!114 &114761687436714088
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,14 +107,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1408470974938094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f09a3226d5cbac84cb82d375781b4302, type: 3}
+  m_Script: {fileID: 11500000, guid: 107332110e85925459af1279672226b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   refCore: {fileID: 0}
   refMapValue: {fileID: 0}
   tParent: {fileID: 0}
-  tStoneGrowth2: {fileID: 4576273687684760}
-  tStoneGrowth3: {fileID: 4963481577755864, guid: 88eb2ed7515d725499c2a6471841f14a,
-    type: 2}
-  iAge: 0
+  tNext: {fileID: 0}
+  iMaxStage: 0
+  iStage: 0
   iStartDate: 0

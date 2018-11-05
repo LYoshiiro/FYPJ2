@@ -79,11 +79,12 @@ public class MapGenerator : MonoBehaviour {
 				Transform tTree = Instantiate(refMapValue.GetMapObject(1) as Object, tRandomTransform.position, Quaternion.identity) as Transform;
 
 				// Set Tree's Parent Tile to set Tile as Obstructed
-				tTree.GetComponent<TreeBehaviour>().SetParentTile(tRandomTransform);
+				tTree.GetComponent<Environment>().SetParentTile(tRandomTransform);
 
 				// Setting Instantiated Values
-				tTree.GetComponent<TreeBehaviour>().SetReferences(refCore, refMapValue);
-				tTree.GetComponent<TreeBehaviour>().SetGrowthLevel(1);
+				tTree.GetComponent<Environment>().SetReferences(refCore, refMapValue);
+				tTree.GetComponent<Environment>().SetStageMax(3);
+				tTree.GetComponent<Environment>().SetStageLevel(1);
 			}
 
 			// Check if the stone at the start is spawned yet or not
@@ -100,11 +101,12 @@ public class MapGenerator : MonoBehaviour {
 				Transform tStone = Instantiate(refMapValue.GetMapObject(2) as Object, tRandomTransform.position, Quaternion.identity) as Transform;
 
 				// Set Tree's Parent Tile to set Tile as Obstructed
-				tStone.GetComponent<StoneBehaviour>().SetParentTile(tRandomTransform);
+				tStone.GetComponent<Environment>().SetParentTile(tRandomTransform);
 
 				// Setting Instantiated Values
-				tStone.GetComponent<StoneBehaviour>().SetReferences(refCore, refMapValue);
-				tStone.GetComponent<StoneBehaviour>().SetAgeLevel(1);
+				tStone.GetComponent<Environment>().SetReferences(refCore, refMapValue);
+				tStone.GetComponent<Environment>().SetStageMax(2);
+				tStone.GetComponent<Environment>().SetStageLevel(1);
 			}
 		}
     }

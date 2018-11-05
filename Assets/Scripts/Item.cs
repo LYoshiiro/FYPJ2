@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour {
+public class Item {
 // Class Instances Reference
 	[SerializeField] private UniversalFunctions refCore;
 
@@ -12,15 +12,19 @@ public class Item : MonoBehaviour {
 	[SerializeField] private string strName;
 	[SerializeField] private string strText;
 	
-// Initialize
-	public void Initialize(int ID, int Count, string Name, string Text) {
+// Setter
+	public Item(int ID, int Count, string Name, string Text) {
 		iID 	= ID;		// Item ID
 		iCount 	= Count;	// Item Count in inventory (if in inventory)
 		strName = Name;		// Item Name
 		strText = Text;		// Item Flavor Text
 	}
 
-// Change the count value of an item
+// Getter
+	public string GetItem() {
+		return iID + ", " + iCount + ", " + strName + ", " + strText;
+	}
+
 	public void Changer(int Count) {
 		iCount = Count;
 	}

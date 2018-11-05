@@ -35,10 +35,10 @@ public class MapValue : MonoBehaviour {
         ftTime += Time.deltaTime;
 
         // Print the Map Time and Date
-        /*  string strTime = "Time: " + ftTime;
-            string strDate = "Date: " + iDate;
-            refCore.Print(strTime);
-            refCore.Print(strDate); */
+            // string strTime = "Time: " + ftTime;
+            // string strDate = "Date: " + iDate;
+            // refCore.Print(strTime);
+            // refCore.Print(strDate);
 
         // If the Time is over a certain mark, reset the time and set it to a new day
         // if (ftTime > 720000.0f) {

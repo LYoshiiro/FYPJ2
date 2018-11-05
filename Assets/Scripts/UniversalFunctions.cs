@@ -46,11 +46,13 @@ public class UniversalFunctions : MonoBehaviour {
 		string[] strAry = new string[0];
 
         // Failsafe
-        if (!File.Exists(Name))
+        if (!File.Exists(Name)) {
             File.Create(Name);
+			Print("File was Created!");
+		}
 
-        Print(File.GetAttributes(Name));
-
+		// Get Status of the File that is being checked
+        // Print(File.GetAttributes(Name));
 
         // Get all the lines from the text file
         strAry = File.ReadAllLines(Name);
@@ -61,9 +63,10 @@ public class UniversalFunctions : MonoBehaviour {
     // CSV Writer
     public void CSVWriter(string Name, string[] Append) {
         // Failsafe
-        if (!File.Exists(Name))
+        if (!File.Exists(Name)) {
             File.Create(Name);
-
+			Print("File was Created!");
+		}
 
         // Append all the lines to the text file
         for (int i = 0; i < Append.Length; i++)

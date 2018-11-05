@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33580991592482600}
   - component: {fileID: 23917540099346894}
   - component: {fileID: 64940176443776466}
-  - component: {fileID: 114082095076672214}
+  - component: {fileID: 114886015684550968}
   m_Layer: 0
   m_Name: Block_TreeGrowth3
   m_TagString: Untagged
@@ -99,7 +99,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ef4df166a0e70a04199b42e0c836d910, type: 3}
---- !u!114 &114082095076672214
+--- !u!114 &114886015684550968
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,14 +107,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1996060538722802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e025eee45bb1a034882dfdfed29c3dcb, type: 3}
+  m_Script: {fileID: 11500000, guid: 107332110e85925459af1279672226b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   refCore: {fileID: 0}
   refMapValue: {fileID: 0}
   tParent: {fileID: 0}
-  tTreeGrowth2: {fileID: 4730477794876242, guid: d4647751b909098408c179e63256a0de,
-    type: 2}
-  tTreeGrowth3: {fileID: 4520488947382226}
-  iGrowth: 0
+  tNext: {fileID: 0}
+  iMaxStage: 0
+  iStage: 0
   iStartDate: 0

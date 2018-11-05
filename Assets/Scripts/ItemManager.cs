@@ -10,7 +10,13 @@ public class ItemManager : MonoBehaviour {
 	private string strFile;
 	private string[] strAry;
 
+// Management List
+	List<Item> listItem;
+
 	private void Start() {
+		// Creating a new Item list
+		listItem = new List<Item>();
+
 		// Create FilePath
 		strFile = "Items.txt";
 
@@ -18,8 +24,12 @@ public class ItemManager : MonoBehaviour {
         strAry = refCore.CSVReader(strFile);
 
         // Instantiate all items from the FilePath
-        //for (int i = 0; i < strAry.Length; i++) {
+        for (int i = 0; i < strAry.Length; i++) {
+			string[] strSplit = strAry[i].Split(',');
+			listItem.Add(new Item(int.Parse(strSplit[0]), int.Parse(strSplit[1]), strSplit[2], strSplit[3]));
+		}
 
-        //}
+		foreach (Item item in listItem)
+			refCore.Print(item.GetItem());
 	}
 }

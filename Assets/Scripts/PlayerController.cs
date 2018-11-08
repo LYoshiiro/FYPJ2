@@ -102,6 +102,13 @@ public class PlayerController : MonoBehaviour {
 			Quaternion quatRotation = Quaternion.LookRotation(vec3Look);
 			// Turn Player to the cursor point
 			transform.rotation = quatRotation;
+
+			if (Input.GetMouseButtonDown(0)) {
+				// Copy over the selected Transform
+				Transform tGather = hit.transform;
+
+				
+			}
 		}
 	}
 }

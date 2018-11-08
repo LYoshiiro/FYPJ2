@@ -28,8 +28,5 @@ public class ItemManager : MonoBehaviour {
 			string[] strSplit = strAry[i].Split(',');
 			listItem.Add(new Item(int.Parse(strSplit[0]), int.Parse(strSplit[1]), strSplit[2], strSplit[3]));
 		}
-
-		foreach (Item item in listItem)
-			refCore.Print(item.GetItem());
 	}
 }

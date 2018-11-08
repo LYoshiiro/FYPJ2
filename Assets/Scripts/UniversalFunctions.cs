@@ -72,6 +72,7 @@ public class UniversalFunctions : MonoBehaviour {
         for (int i = 0; i < Append.Length; i++)
             File.AppendAllText(Name, Append[i]);
     }
+
 }
 
 // Returns Application's Path

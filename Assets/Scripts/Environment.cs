@@ -14,7 +14,9 @@ public class Environment : MonoBehaviour {
 // Stage Values
 	[SerializeField] private int iMaxStage;
 	[SerializeField] private int iStage;
+	[SerializeField] private int iStageChange;
 	[SerializeField] private int iStartDate;
+
 
 	private void Start() {
 		if ((tParent != null) && (tParent.GetComponent<TileBehaviour>().GetInteraction(5) != true))
@@ -46,6 +48,11 @@ public class Environment : MonoBehaviour {
 		iStage = Level;
 	}
 
+// Set the Stage of the Transform
+	public void SetStageChange(int Days) {
+		iStageChange = Days;
+	}
+
 // Set the Start Date of the Transform
 	public void SetStartDate(int Date) {
 		iStartDate = Date;
@@ -54,7 +61,7 @@ public class Environment : MonoBehaviour {
 // Tree Growth Process and Logic
 	private void StageChange(int Max) {
 		if (iStage < Max) {
-			if ((int.Parse(refMapValue.GetMapTimeDate(2)) - iStartDate) > 3 ) {
+			if ((int.Parse(refMapValue.GetMapTimeDate(2)) - iStartDate) > iStageChange ) {
 				// Hide Updating GameObject
 				transform.GetComponent<MeshRenderer>().enabled = false;
 				// Instantiate Updated GameObject

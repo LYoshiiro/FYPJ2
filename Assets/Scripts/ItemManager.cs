@@ -11,7 +11,7 @@ public class ItemManager : MonoBehaviour {
 	private string[] strAry;
 
 // Management List
-	List<Item> listItem;
+	private List<Item> listItem;
 
 	private void Start() {
 		// Creating a new Item list
@@ -28,5 +28,22 @@ public class ItemManager : MonoBehaviour {
 			string[] strSplit = strAry[i].Split(',');
 			listItem.Add(new Item(int.Parse(strSplit[0]), int.Parse(strSplit[1]), strSplit[2], strSplit[3]));
 		}
+	}
+
+// get the whole item list
+	public List<Item> GetItemList() {
+		return listItem;
+	}
+
+// print the whole item list
+	public void printlist() {
+		foreach (Item inst in listItem)
+		refCore.Print(inst.strName);
+	}
+
+// Append function to add count when item is gathered from environment
+	public void Gather(string ItemName) {
+		Item GatherItem = listItem.Find(i => i.strName == ItemName);
+		GatherItem.Changer(1);
 	}
 }

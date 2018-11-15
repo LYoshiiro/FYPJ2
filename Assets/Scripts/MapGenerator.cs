@@ -83,6 +83,7 @@ public class MapGenerator : MonoBehaviour {
 
 				// Setting Instantiated Values
 				tTree.GetComponent<Environment>().SetReferences(refCore, refMapValue);
+				tTree.GetComponent<Environment>().SetReferenceName("Wood");
 				tTree.GetComponent<Environment>().SetStageMax(3);
 				tTree.GetComponent<Environment>().SetStageChange(5);
 				tTree.GetComponent<Environment>().SetStageLevel(1);
@@ -106,6 +107,7 @@ public class MapGenerator : MonoBehaviour {
 
 				// Setting Instantiated Values
 				tStone.GetComponent<Environment>().SetReferences(refCore, refMapValue);
+				tStone.GetComponent<Environment>().SetReferenceName("Stone");
 				tStone.GetComponent<Environment>().SetStageMax(2);
 				tStone.GetComponent<Environment>().SetStageChange(8);
 				tStone.GetComponent<Environment>().SetStageLevel(1);

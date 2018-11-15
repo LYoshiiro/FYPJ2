@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 // Class Instances Reference
 	[SerializeField] private UniversalFunctions refCore;
 	[SerializeField] private MapGenerator refMap;
+	[SerializeField] private ItemManager refItemManager;
 	private Rigidbody refBody;
 
 // Movement
@@ -106,8 +107,10 @@ public class PlayerController : MonoBehaviour {
 			if (Input.GetMouseButtonDown(0)) {
 				// Copy over the selected Transform
 				Transform tGather = hit.transform;
-
-				
+				// Get the environment's name
+				refCore.Print(tGather.GetComponent<Environment>().strRefName);
+				if (refItemManager != null)
+					refItemManager.Gather(tGather.GetComponent<Environment>().strRefName);
 			}
 		}
 	}

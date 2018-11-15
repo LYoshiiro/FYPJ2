@@ -7,10 +7,10 @@ public class Item {
 	[SerializeField] private UniversalFunctions refCore;
 
 // Item Values
-	[SerializeField] private int iID;
-	[SerializeField] private int iCount;
-	[SerializeField] private string strName;
-	[SerializeField] private string strText;
+	[SerializeField] public int iID;
+	[SerializeField] public int iCount;
+	[SerializeField] public string strName;
+	[SerializeField] public string strText;
 	
 // Setter
 	public Item(int ID, int Count, string Name, string Text) {
@@ -20,13 +20,9 @@ public class Item {
 		strText = Text;		// Item Flavor Text
 	}
 
-// Getter
-	public string GetItem() {
-		return iID + ", " + iCount + ", " + strName + ", " + strText;
-	}
-
+// Change Value of item count
 	public void Changer(int Count) {
-		iCount = Count;
+		iCount += Count;
 	}
 
 }

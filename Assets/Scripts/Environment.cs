@@ -12,6 +12,7 @@ public class Environment : MonoBehaviour {
     [SerializeField] private Transform tNext;
 	
 // Stage Values
+	[SerializeField] public string strRefName;
 	[SerializeField] private int iMaxStage;
 	[SerializeField] private int iStage;
 	[SerializeField] private int iStageChange;
@@ -36,6 +37,11 @@ public class Environment : MonoBehaviour {
 // Set Parent Tile
 	public void SetParentTile(Transform Tile) {
 		tParent = Tile;
+	}
+
+// Set Reference Name
+	public void SetReferenceName(string Name) {
+		strRefName = Name;
 	}
 
 // Set Max Stage of the Transform
@@ -68,6 +74,7 @@ public class Environment : MonoBehaviour {
 				Transform tNewEnvironment = Instantiate(tNext, transform.position, Quaternion.identity);
 				// Setting Instantiated values
 				tNewEnvironment.GetComponent<Environment>().SetReferences(refCore, refMapValue);
+				tNewEnvironment.GetComponent<Environment>().SetReferenceName(strRefName);
 				tNewEnvironment.GetComponent<Environment>().SetStageMax(iMaxStage);
 				tNewEnvironment.GetComponent<Environment>().SetStageLevel(++iStage);
 				tNewEnvironment.GetComponent<Environment>().SetStartDate(int.Parse(refMapValue.GetMapTimeDate(2)));

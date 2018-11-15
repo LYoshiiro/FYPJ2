@@ -1,2 +1,3 @@
 0,0,Wood,Used for Crafting.
 1,0,Stone,Used for Crafting.
+2,0,Raft,A means to get off the island.

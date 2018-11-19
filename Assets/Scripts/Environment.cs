@@ -25,7 +25,9 @@ public class Environment : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
-		StageChange(iMaxStage);
+		// If game isn't paused
+		if (refCore.blPause == false)
+			StageChange(iMaxStage);
 	}
 
 // Set Instances Reference
@@ -72,6 +74,7 @@ public class Environment : MonoBehaviour {
 				transform.GetComponent<MeshRenderer>().enabled = false;
 				// Instantiate Updated GameObject
 				Transform tNewEnvironment = Instantiate(tNext, transform.position, Quaternion.identity);
+				tNewEnvironment.parent = transform.parent;
 				// Setting Instantiated values
 				tNewEnvironment.GetComponent<Environment>().SetReferences(refCore, refMapValue);
 				tNewEnvironment.GetComponent<Environment>().SetReferenceName(strRefName);

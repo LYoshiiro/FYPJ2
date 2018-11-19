@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UniversalFunctions : MonoBehaviour {
+// Universal Variables
+	[SerializeField] public bool blPause;
+	[SerializeField] public bool blWin;
+
 
 	// Print info
 	public void Print<T>(T V) {

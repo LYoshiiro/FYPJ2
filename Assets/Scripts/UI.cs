@@ -9,25 +9,44 @@ public class UI : MonoBehaviour {
 	[SerializeField] private ItemManager refItemManager;
 	
 // Framerate
-	[SerializeField] private Transform tFPS;
 	private float ftFPS;
 
-// DebugInfo
-	[SerializeField] private Transform tWood;
-	private int iWood;
-	[SerializeField] private Transform tStone;
-	private int iStone;
+// Win
+	[SerializeField] private Transform tWin;
 
-// CraftingInfo
+// DebugInfo
+	[SerializeField] private List<Transform> listTransform;
+	private Dictionary<string, int> dictValue;
+
+	private void Start() {
+		// Create new dictionary.
+		dictValue = new Dictionary<string, int>();
+		// Adding base logs and values;
+		dictValue.Add("Wood", 0);
+		dictValue.Add("Stone", 0);
+		dictValue.Add("Raft", 0);
+	}
 
 	private void FixedUpdate() {
-		ftFPS = (1 / Time.deltaTime);
-		DisplayFPS();
-		DisplayInfo();
+		// If game isn't paused
+		if (refCore.blPause == false) {
+			// Measure the framerate per seconds.
+			ftFPS = (1 / Time.deltaTime);
+			// Display UIs.
+			DisplayFPS();
+			DisplayInfo();
+		}
+
+		if (refCore.blWin == true) {
+			tWin.gameObject.SetActive(true);
+		}
 	}
 	
 // Display FPS
 	private void DisplayFPS () {
+		// Get the Transform from the list.
+		Transform tFPS = listTransform.Find(t => t.name == "FPS");
+		// Assign and display the value.
 		tFPS.GetComponent<TextMeshProUGUI>().text = "FPS : " + ftFPS;
 	}
 
@@ -36,16 +55,31 @@ public class UI : MonoBehaviour {
 		// Get the reference list for the items.
 		List<Item> listTemp = refItemManager.GetItemList();
 
-		iWood = listTemp.Find(i => i.strName == "Wood").iCount;
-		tWood.GetComponent<TextMeshProUGUI>().text = "Wood : " + iWood;
-		iStone = listTemp.Find(i => i.strName == "Stone").iCount;
-		tStone.GetComponent<TextMeshProUGUI>().text = "Stone : " + iStone;
-	}
+		// Create string for easier use
+		string strLog = "";
 
-// Display crafted debug info
-	private void DisplayCraft() {
-		List<Item> listTemp = refItemManager.GetItemList();
+		strLog = "Wood";
+		// Assign the value to the list for item values;
+		dictValue[strLog] = (listTemp.Find(i => i.strName == strLog).iCount);
+		// Get the Transform from the list.
+		Transform tWood = listTransform.Find(t => t.name == strLog);
+		// Display the value.
+		tWood.GetComponent<TextMeshProUGUI>().text = strLog + " : " + dictValue[strLog];
 
+		strLog = "Stone";
+		// Assign the value to the list for item values;
+		dictValue[strLog] = (listTemp.Find(i => i.strName == strLog).iCount);
+		// Get the Transform from the list.
+		Transform tStone = listTransform.Find(t => t.name == strLog);
+		// Display the value.
+		tStone.GetComponent<TextMeshProUGUI>().text = strLog + " : " + dictValue[strLog];
 
+		strLog = "Raft";
+		// Assign the value to the list for item values;
+		dictValue[strLog] = (listTemp.Find(i => i.strName == strLog).iCount);
+		// Get the Transform from the list.
+		Transform tRaft = listTransform.Find(t => t.name == strLog);
+		// Display the value.
+		tRaft.GetComponent<TextMeshProUGUI>().text = strLog + " : " + dictValue[strLog];
 	}
 }

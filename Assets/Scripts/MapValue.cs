@@ -31,20 +31,23 @@ public class MapValue : MonoBehaviour {
 	}
 	
     private void FixedUpdate() {
-        // Move Time as the Game Progress
-        ftTime += Time.deltaTime;
+        // If game isn't paused
+		if (refCore.blPause == false) {
+            // Move Time as the Game Progress
+            ftTime += Time.deltaTime;
 
-        // Print the Map Time and Date
-            // string strTime = "Time: " + ftTime;
-            // string strDate = "Date: " + iDate;
-            // refCore.Print(strTime);
-            // refCore.Print(strDate);
+            // Print the Map Time and Date
+                // string strTime = "Time: " + ftTime;
+                // string strDate = "Date: " + iDate;
+                // refCore.Print(strTime);
+                // refCore.Print(strDate);
 
-        // If the Time is over a certain mark, reset the time and set it to a new day
-        // if (ftTime > 720000.0f) {
-        if (ftTime > 2.5f) {
-            iDate += 1;
-            ftTime = 0.0f;
+            // If the Time is over a certain mark, reset the time and set it to a new day
+            // if (ftTime > 720000.0f) {
+            if (ftTime > 2.5f) {
+                iDate += 1;
+                ftTime = 0.0f;
+            }
         }
     }
 

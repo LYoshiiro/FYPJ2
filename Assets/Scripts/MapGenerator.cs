@@ -10,6 +10,7 @@ public class MapGenerator : MonoBehaviour {
 // GameObjects
 	[SerializeField] private Transform tBasePlate;
 	private Transform tMapHolder;
+	private Transform tEnvironmentHolder;
 
 // Scales
 	[SerializeField] private Vector2 vec2BasePlateSize;
@@ -31,6 +32,13 @@ public class MapGenerator : MonoBehaviour {
 
 		tMapHolder = new GameObject (strHolder).transform;
 		tMapHolder.parent = transform;
+
+		string strEnvironment = "Environment Holder";
+		if (transform.Find(strEnvironment))
+			DestroyImmediate(transform.Find(strEnvironment).gameObject);
+
+		tEnvironmentHolder = new GameObject (strEnvironment).transform;
+		tEnvironmentHolder.parent = transform;
 
 		int iTileCount = 1;
 
@@ -77,6 +85,7 @@ public class MapGenerator : MonoBehaviour {
 				// Get the tile of the randomized location and create a Tree on said position
 				Transform tRandomTransform = tMapHolder.GetChild(iRandom).transform;
 				Transform tTree = Instantiate(refMapValue.GetMapObject(1) as Object, tRandomTransform.position, Quaternion.identity) as Transform;
+				tTree.parent = tEnvironmentHolder;
 
 				// Set Tree's Parent Tile to set Tile as Obstructed
 				tTree.GetComponent<Environment>().SetParentTile(tRandomTransform);
@@ -101,6 +110,7 @@ public class MapGenerator : MonoBehaviour {
 				// Get the tile of the randomized location and create a Stone on said position
 				Transform tRandomTransform = tMapHolder.GetChild(iRandom).transform;
 				Transform tStone = Instantiate(refMapValue.GetMapObject(2) as Object, tRandomTransform.position, Quaternion.identity) as Transform;
+				tStone.parent = tEnvironmentHolder;
 
 				// Set Tree's Parent Tile to set Tile as Obstructed
 				tStone.GetComponent<Environment>().SetParentTile(tRandomTransform);

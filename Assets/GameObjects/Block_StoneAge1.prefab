@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1697444977674166}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1697444977674166
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4627675099109386}
   - component: {fileID: 33392121339244788}
@@ -33,7 +33,7 @@ GameObject:
 --- !u!4 &4627675099109386
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697444977674166}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
@@ -46,7 +46,7 @@ Transform:
 --- !u!23 &23302211865342688
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697444977674166}
   m_Enabled: 1
@@ -81,14 +81,14 @@ MeshRenderer:
 --- !u!33 &33392121339244788
 MeshFilter:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697444977674166}
   m_Mesh: {fileID: 4300000, guid: f51514a664fb1ec4889c04ba774f5877, type: 3}
 --- !u!64 &64124647380545826
 MeshCollider:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697444977674166}
   m_Material: {fileID: 0}
@@ -102,7 +102,7 @@ MeshCollider:
 --- !u!114 &114531991594005296
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697444977674166}
   m_Enabled: 1
@@ -113,7 +113,10 @@ MonoBehaviour:
   refCore: {fileID: 0}
   refMapValue: {fileID: 0}
   tParent: {fileID: 0}
-  tNext: {fileID: 4576273687684760, guid: d95b62f80052d3f40821751d14a96960, type: 2}
+  tEnvironmentLine:
+  - {fileID: 4576273687684760, guid: d95b62f80052d3f40821751d14a96960, type: 2}
+  strRefName: 
   iMaxStage: 0
   iStage: 0
+  iStageChange: 0
   iStartDate: 0

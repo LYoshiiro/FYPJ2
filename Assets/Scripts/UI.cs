@@ -14,6 +14,10 @@ public class UI : MonoBehaviour {
 // Win
 	[SerializeField] private Transform tWin;
 
+// Crafting
+    [SerializeField] private Transform tCraft;
+    public bool blCraftUp;
+
 // DebugInfo
 	[SerializeField] private List<Transform> listTransform;
 	private Dictionary<string, int> dictValue;
@@ -25,6 +29,8 @@ public class UI : MonoBehaviour {
 		dictValue.Add("Wood", 0);
 		dictValue.Add("Stone", 0);
 		dictValue.Add("Raft", 0);
+        // Default Crafting Menu off
+        blCraftUp = false;
 	}
 
 	private void FixedUpdate() {
@@ -35,6 +41,9 @@ public class UI : MonoBehaviour {
 			// Display UIs.
 			DisplayFPS();
 			DisplayInfo();
+
+            //Toggle Crafting Menu UI
+            tCraft.gameObject.SetActive(blCraftUp);
 		}
 
 		if (refCore.blWin == true) {

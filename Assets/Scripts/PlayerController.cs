@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Threading;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,6 +29,9 @@ public class PlayerController : MonoBehaviour {
 // Facing Direction
 	private RaycastHit hit;
 	private Ray ray;
+
+// Interaction
+    private float ftBounceClick;
 
 	private void Start() {
 		refBody = transform.GetComponent<Rigidbody>();
@@ -77,8 +81,10 @@ public class PlayerController : MonoBehaviour {
 	private void FixedUpdate () {
 		// If game isn't paused
 		if (refCore.blPause == false) {
-			// Apply Axis Movement Input
-			Vector3 vec3Move = new Vector3(ftMoveX, 0.0f, ftMoveZ) * (Time.deltaTime * ftSpeed);
+            ftBounceClick += Time.deltaTime;
+
+            // Apply Axis Movement Input
+            Vector3 vec3Move = new Vector3(ftMoveX, 0.0f, ftMoveZ) * (Time.deltaTime * ftSpeed);
 			transform.Translate(vec3Move, Space.World);
 
 			// Apply Jump Movement Input
@@ -131,53 +137,80 @@ public class PlayerController : MonoBehaviour {
 
 				// When LMB is pressed down.
 				if (Input.GetMouseButtonDown(0)) {
-					// To ensure that non environment/interactable object is accidentally parsed.
-					if (hit.transform.GetComponent<Environment>() != null) {
-						// Copy over the selected Transform
-						Transform tGather = hit.transform;
+                    // Bounce Timer for Click Interact
+                    if (ftBounceClick > 1.5f)
+                    {
+                        // To ensure that non environment/interactable object is accidentally parsed.
+                        if (hit.transform.GetComponent<Environment>() != null) {
+                            // Display the distance between the gathering object and the player
+                            //refCore.Print(Vector3.Magnitude((transform.position - hit.transform.position)));
 
-						// Get the environment's name
-						// refCore.Print(tGather.GetComponent<Environment>().name);
+                            // Check for distance from the player to the object being gathered (at most half a block away)
+                            if (Vector3.Magnitude((transform.position - hit.transform.position)) < 1.25f) {
 
-						// Get the environment's material name
-						// refCore.Print(tGather.GetComponent<Environment>().strRefName);
+						    // Copy over the selected Transform
+						    Transform tGather = hit.transform;
+
+						    // Get the environment's name
+						    // refCore.Print(tGather.GetComponent<Environment>().name);
+
+						    // Get the environment's material name
+						    // refCore.Print(tGather.GetComponent<Environment>().strRefName);
 						
-						if (refItemManager != null)
-							// Parse the material just gathered and update the datalist.
-							refItemManager.Gather(tGather.GetComponent<Environment>().strRefName);
-					}
+						    if (refItemManager != null) {
+							    // Parse the material just gathered and update the datalist.
+							    refItemManager.Gather(tGather.GetComponent<Environment>().strRefName);
+
+                                // Degenerade Environment.
+                                tGather.GetComponent<Environment>().StageDown();
+                                }
+                            }
+					    }
+                        // Reset Bounce Timer.
+                        ftBounceClick = 0.0f;
+                    }
 				}
 
 				// When RMB is pressed down.
 				if (Input.GetMouseButtonDown(1)) {
-					// To check specifically if its the water that is being interacted with.
-					if (hit.transform.GetComponent<WaterMotion>() != null) {
-						// Item Manager Check.
-						if (refItemManager != null) {
-							// Get the reference list for the items.
-							List<Item> listTemp = refItemManager.GetItemList();
+                    // Bounce Timer for Click Interact
+                    if (ftBounceClick > 1.5f)
+                    {
+                        // To check specifically if its the water that is being interacted with.
+                        if (hit.transform.GetComponent<WaterMotion>() != null)
+                        {
+                            // Item Manager Check.
+                            if (refItemManager != null)
+                            {
+                                // Get the reference list for the items.
+                                List<Item> listTemp = refItemManager.GetItemList();
 
-							// Create string for easier use
-							string strLog = "";
+                                // Create string for easier use
+                                string strLog = "";
 
-							strLog = "Raft";
-							//Get the Raft's item data.
-							Item RaftItem = listTemp.Find(item => item.strName == strLog);
+                                strLog = "Raft";
+                                //Get the Raft's item data.
+                                Item RaftItem = listTemp.Find(item => item.strName == strLog);
 
-							// Check for wining condition.
-							if (RaftItem.iCount > 0) {
-								// Consume Raft
-								listTemp.Find(item => item.strName == strLog).iCount -= 1;
+                                // Check for wining condition.
+                                if (RaftItem.iCount > 0)
+                                {
+                                    // Consume Raft
+                                    listTemp.Find(item => item.strName == strLog).iCount -= 1;
 
-								// Win Game
-								refCore.blWin = true;
-								// Pause(End) Game
-								refCore.blPause = true;
-							}
-						}
-					}
+                                    // Win Game
+                                    refCore.blWin = true;
+                                    // Pause(End) Game
+                                    refCore.blPause = true;
+                                }
+                            }
+                        }
+                        // Print Error Message.
+                        else refCore.Print("Item Manager Invalid/Missing!");
 
-					else refCore.Print("Item Manager Invalid/Missing!");
+                        // Reset Bounce Timer.
+                        ftBounceClick = 0.0f;
+                    }
 				}
 			}
 		}

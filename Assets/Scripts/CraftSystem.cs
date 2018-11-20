@@ -6,9 +6,18 @@ public class CraftSystem : MonoBehaviour {
 // Class Instances Reference
 	[SerializeField] private UniversalFunctions refCore;
 	[SerializeField] private ItemManager refItemManager;
+    [SerializeField] private UI refUI;
 
-// Crafting Raft Function
-	public void CraftRaft() {
+    private void FixedUpdate() {
+        // If game isn't paused
+        if (refCore.blPause == false) {
+            if (Input.GetKeyDown(KeyCode.E))
+                refUI.blCraftUp = !refUI.blCraftUp;
+        }
+    }
+
+    // Crafting Raft Function
+    public void CraftRaft() {
 		// Get the reference list for the items.
 		List<Item> listTemp = refItemManager.GetItemList();
 
